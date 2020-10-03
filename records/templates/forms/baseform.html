@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet"/>
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+    <link href="{% static 'css/searchbar.css' %}" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="{% static  'form.css'  %}">
+    {{ form.media.css }}
+</head>
+<body align="center">
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container contact">
+
+
+            {% block content %}
+        {% endblock %}
+    </div>
+
+</div>
+
+
+</body>
+{{ form.media.js }}
+
+</html>
+
+

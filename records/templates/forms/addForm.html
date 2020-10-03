@@ -1,0 +1,29 @@
+{% extends 'forms/baseform.html' %}
+
+{% block content %}
+<title>Add Blog</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+        <div class="col-md-9">
+            <div class="contact-form">
+
+                <h1 align="center">Add New Blog</h1>
+                {% load crispy_forms_tags %}
+  <form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+      <div style="text-align: center;">
+    <button type="submit" class="btn btn-primary">Submit</button>
+      <a style="background:#050951; color:#fff; width:25%; font-weight:600; text-decoration:none"
+         href=" {% url 'records:dashboard'%}" class="btn btn-default">Cancel</a>
+  </div>
+  </form>
+
+            </div>
+        </div>
+
+
+{% endblock %}
+
+
+
