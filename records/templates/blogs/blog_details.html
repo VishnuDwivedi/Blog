@@ -1,0 +1,133 @@
+
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+    <header class="masthead1">
+
+    <div class="container">
+      <div class="intro-text">
+        {% for blog_details in blog_details %}
+        <div class="intro-lead-in" style="text-align:right;color:chartreuse">{{blog_details.technology__name}}</div>
+        {% endfor %}
+      </div>
+    </div>
+  </header>
+   <br>
+{% for blog_details in blog_details %}
+<nav style="
+    text-align: center;font-size: larger;font-style: oblique;"><b>{{blog_details.short_details}}</b></nav>
+
+<br>
+<div class="col-xl-10 col-md-6 mb-4 mx-auto">
+  <div class="card border-left-success shadow h-100 py-2">
+    <div class="card-body">
+
+
+      <div class="row no-gutters align-items-center">
+        <div class="col mr-2">
+
+<code>
+
+          {{blog_details.description|safe }}
+
+</code>
+            {% if blog_details.blog_details_photo %}
+            <div style="text-align: center;font-size: larger;font-style: oblique;"><b>Code Snippet</b> </div>
+            <br>
+
+        <!---<img src="{{ blog_details.blog_details_photo.image.url }}" class="img-fluid" alt="object.title">  --->
+            <img src="../../media/{{blog_details.blog_details_photo}}" class="img-fluid" alt="object.title" >
+            {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% if user %}
+<div style="text-align: center;font-size: larger;font-style: oblique;"><b>Write your Comments</b> </div>
+<div style="text-align: center;">
+<textarea id="comment"rows="4" cols="50" name="comment">
+</textarea>
+  <br>
+  <button onclick="comment({{blog_details.id}})"> Submit </button>
+  <br>
+<br>
+</div>
+{% endif %}
+{% endfor %}
+   {% if comment %}
+<div style="text-align: center;font-size: larger;font-style: oblique;"><b>Comments</b> </div>
+    <div class="col-xl-10 col-md-6 mb-4 mx-auto">
+      <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+
+
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xl font-weight-bold text-success mb-1">
+
+              </div>
+              <div id="blog_comment">
+
+              </div>
+
+               {% for comment in comment %}
+
+                <b style="color:#ff3300; text-transform: uppercase;">{{comment.user__username }}</b>:<span style="font-size: small;">&nbsp &nbsp {{comment.created_at}}</span>
+         <span id="{{comment.id}}">
+             {% if user %}
+             <a onclick="like_comment({{comment.id}})"><i class="fas fa-thumbs-up"> {{comment.like }}</i></a>
+             {% else %}
+             <i class="fas fa-thumbs-up" title="Please login for liking comments.">{{comment.like }}</i>
+
+             {% endif %}
+            </span>
+              <p style= "padding-top: 8px;padding-left: 90px;"><span style="background-color: yellow;">{{comment.comments}}</span></p>
+                <br>
+
+         {% endfor %}
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endif %}
+
+
+
+
+    <!-- Contact -->
+  <section class="page-section" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Contact Us</h2>
+          <h3 class="section-subheading text-muted"></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          {% for details in details %}
+          <div style="text-align:center;color:white; font-size:xx-large">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            {{details.contact}}<br>
+          <i class="fa fa-envelope-square" aria-hidden="true"></i>
+            {{details.email}}</div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {% endblock %}
+
+

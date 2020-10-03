@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="{% static  'login.css'  %}">
+</head>
+<body style="background:#495057">
+
+<div class="background-wrap">
+  <div class="background"></div>
+</div>
+
+<form id="accesspanel" method="POST" style="height:fit-content;background:hsl(238, 32%, 33%);width: 450px;">
+  <h1 id="litheader">Welcome to Blog</h1>
+  <div class="inset">
+
+  {% csrf_token %}
+
+  {{form}}
+  </div>
+  <p class="p-container">
+    <input type="submit" name="Login" id="go" value="Authorize">
+       <br>
+       <a style="background:#dc3545; color:#fff; width:100%; font-weight:600; text-decoration:none"
+         href=" {% url 'records:dashboard'%}" class="btn btn-default">Cancel</a>
+  </p>
+
+</form>
+<script>
+    $(document).ready(function() {
+
+    var state = false;
+
+    //$("input:text:visible:first").focus();
+
+    $('#accesspanel').on('submit', function(e) {
+
+
+        state = !state;
+
+        if (state) {
+        console.log("I am here");
+            document.getElementById("litheader2").className = "poweron";
+            document.getElementById("litheader").className = "poweron";
+            document.getElementById("go").className = "";
+            document.getElementById("go").value = "Initializing...";
+        }else{
+            document.getElementById("litheader2").className = "";
+            document.getElementById("litheader").className = "";
+            document.getElementById("go").className = "denied";
+            document.getElementById("go").value = "Access Denied";
+        }
+
+    });
+
+});
+</script>
+
+</body>
+</html>

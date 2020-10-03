@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    <header class="masthead" style="background-image: url('{% static 'img/portfolio/python.jpg' %}')">
+
+    <div class="container">
+
+      <div class="intro-text">
+          {% for technology_details in technology_details|slice:":1" %}
+        <div class="intro-lead-in" style="text-align:right;color:chartreuse">{{technology_details.technology__name}}</div>
+          {% endfor %}
+      </div>
+    </div>
+  </header>
+   <br>
+
+  <div class="row" style="margin-left:0.25rem ; margin-right:0.25rem ;important!">
+
+              {% for technology_details in technology_details %}
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+
+
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xl font-weight-bold text-success mb-1">
+
+              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+                <a href="/{{technology_details.technology__name}}/{{technology_details.id}}">
+                {{technology_details.short_details}}
+                </a>({{technology_details.written_by__username}})<br>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   {% endfor %}
+     </div>
+
+
+
+  <!-- Contact -->
+   <!-- Contact -->
+  <section class="page-section" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Contact Us</h2>
+          <h3 class="section-subheading text-muted"></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          {% for details in details %}
+          <div style="text-align:center;color:white; font-size:xx-large">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            {{details.contact}}<br>
+          <i class="fa fa-envelope-square" aria-hidden="true"></i>
+            {{details.email}}</div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+    {% endblock %}

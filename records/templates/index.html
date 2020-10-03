@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--<meta name="description" content=""> -->
+
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="author" content="">
+
+  <title>Blog</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/agency.min.css' %}" rel="stylesheet">
+
+</head>
+
+
+<body id="page-top">
+
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background:black; height:25px;">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Reading</a>
+      {% if user %}
+
+            <a class="nav-link js-scroll-trigger" style="color:white; text-transform: uppercase;">Hello {{user.username}}</a>
+      {% endif %}
+
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" style="color:yellow" href="{% url 'records:dashboard' %}">Dashboard</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" style="color:yellow" href="#portfolio">Technologies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger"  style="color:yellow" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" style="color:yellow" href="#team">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" style="color:yellow" href="#contact">Contact</a>
+          </li>
+          {% if  not user %}
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" style="color:yellow" href="/accounts/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" style="color:yellow" href="/accounts/signup">Sign Up</a>
+          </li>
+          {% else %}
+           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'records:add-blog' %}" style="color:yellow">Add BLog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'records:logout' %}" style="color:yellow">Logout</a>
+          </li>
+
+          {% endif %}
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+<!-- Header -->
+  <header class="masthead">
+    <div class="container">
+      <div class="intro-text">
+
+
+        <div class="intro-lead-in">Welcome To Our Blog!</div>
+        <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
+      </div>
+    </div>
+  </header>
+
+
+
+  <!-- Portfolio Grid -->
+  <section class="bg-light page-section" id="portfolio">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Technologies</h2>
+          <h3 class="section-subheading text-muted">Be a Technical guy.</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link"  href="/technology/1">
+            <div class="portfolio-hover">
+              <div>
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid"  src="{% static 'img/portfolio/python.jpg' %}"alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Python</h4>
+
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" href="/technology/3">
+            <div class="portfolio-hover">
+              <div>
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/portfolio/javascript.jpg' %}" style="height:260px" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Java Script</h4>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" href="/technology/4">
+            <div class="portfolio-hover">
+              <div>
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/portfolio/linux.jpg' %}" alt=""
+            style="height:260px; width:350px">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Linux</h4>
+
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" href="/technology/5">
+            <div class="portfolio-hover">
+              <div>
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/portfolio/Django.png' %}" style="height:230px;width: fit-content;" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Django</h4>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link"
+ href="/technology/6">
+            <div class="portfolio-hover">
+              <div>
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/portfolio/java.jpg' %}" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Java</h4>
+
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link"  href="/technology/2">
+            <div class="portfolio-hover">
+              <div>
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/portfolio/ml.jpg' %}" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Machine Learning</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="page-section" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">About</h2>
+          <h3 class="section-subheading text-muted">We are Happy</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="timeline">
+            <li>
+              <div class="timeline-image">
+                <img class="rounded-circle img-fluid" src="{% static 'img/about/1.jpg' %}" alt="">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+
+                  <h4 class="subheading">Our Humble Beginnings</h4>
+                </div>
+                <div class="timeline-body">
+                  {% for details in details %}
+                  <p class="text-muted">{{details.about}}</p>
+                  {% endfor %}
+                </div>
+              </div>
+            </li>
+
+            <li class="timeline-inverted">
+              <div class="timeline-image">
+                <h4>Be Part
+                  <br>Of Our
+                  <br>Blog
+                <br>Call Us!</h4>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="bg-light page-section" id="team">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+          <h3 class="section-subheading text-muted"></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="team-member">
+            <div class="col-md-6" style="float: centre;margin-left: 232px;">
+
+            <img class="mx-auto rounded-circle" src="{% static 'img/team/me.jpg' %}" alt="">
+            <h4>Vaibhav Mishra</h4>
+            <p class="text-muted">Lead</p>
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </li>
+            </ul>
+            </div>
+            
+          </div>
+        </div>
+       
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <p class="large text-muted"></p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact -->
+  <section class="page-section" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Contact Us</h2>
+          <h3 class="section-subheading text-muted"></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          {% for details in details %}
+          <div style="text-align:center;color:white; font-size:xx-large">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            {{details.contact}}<br>
+          <i class="fa fa-envelope-square" aria-hidden="true"></i>
+            {{details.email}}</div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <span class="copyright">Copyright &copy; Your Website 2019</span>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item">
+              <a href="https://www.instagram.com/code_aatma/?igshid=og9f597hwg0x">
+                <i class="fab fa-instagram" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline quicklinks">
+            <li class="list-inline-item">
+              <a href="#">Privacy Policy</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">Terms of Use</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ STATIC_URL }} /static/vendor/jquery/jquery.min.js"></script>
+  <script src="{{ STATIC_URL }} /static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{{ STATIC_URL }} /static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact form JavaScript -->
+  <script src="{{ STATIC_URL }} /static/js/jqBootstrapValidation.js"></script>
+  <script src="{{ STATIC_URL }} /static/js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{{ STATIC_URL }} /static/js/agency.min.js"></script>
+
+
+</body>
+
+</html>
+
+
